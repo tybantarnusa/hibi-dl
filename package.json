@@ -1,6 +1,6 @@
 {
   "name": "@tybantarnusa/hibi-dl",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "HiBiKi Radio Station downloader.",
   "main": "src/index.js",
   "bin": {
