@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export default class VCMS {
+export class VCMS {
     private VCMS_URL: string
     private PROGRAM_ENDPOINT: string
     private VIDEO_ENDPOINT: string;
@@ -15,7 +15,7 @@ export default class VCMS {
         this.access_id = access_id;
     }
 
-    private async getVideoID(): Promise<number> {
+    async getEpisodeInfo(): Promise<Episode> {
         const ENDPOINT: string = this.VCMS_URL + this.PROGRAM_ENDPOINT + this.access_id;
 
         const config = {
@@ -27,18 +27,26 @@ export default class VCMS {
         const response = await axios.get(ENDPOINT, config);
         const program: Program = response.data;
 
-        const video_id: number = program.episode.video.id;
+        return program.episode;
+    }
 
-        console.log(`[OK] Video ID: ${video_id}`)
+    private async getVideoID(): Promise<number> {
+        const episode: Episode = await this.getEpisodeInfo();
+        const video_id: number = episode.video.id;
+
         return video_id;
     }
 
-    async getPlaylistURL(): Promise<string> {
-        const video_id: number = await this.getVideoID();
+    async getPlaylistURL(video_id = -1): Promise<string> {
+        if (video_id === -1) {
+            video_id = await this.getVideoID();
+        }
 
         if (video_id === 0) {
             return "";
         }
+
+        console.log(`[OK] Video ID: ${video_id}`)
 
         const ENDPOINT: string = this.VCMS_URL + this.VIDEO_ENDPOINT + video_id;
 
@@ -64,8 +72,9 @@ interface Program {
     episode: Episode;
 }
 
-interface Episode {
+export interface Episode {
     id: number;
+    program_name: string;
     name: string;
     video: Video;
     updated_at: string;
