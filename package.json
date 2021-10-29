@@ -1,8 +1,14 @@
 {
   "name": "hibi-dl",
   "version": "1.0.0",
-  "description": "HiBiKi Radio Station downloader",
-  "main": "index.js",
+  "description": "HiBiKi Radio Station downloader.",
+  "main": "src/index.js",
+  "bin": {
+    "hibi-dl": "bin/hibi-dl"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,12 +18,26 @@
   },
   "keywords": [
     "hibiki",
-    "downloader"
+    "downloader",
+    "cli",
+    "hibi-dl"
   ],
   "author": "tybantarnusa",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/tybantarnusa/hibi-dl/issues"
   },
-  "homepage": "https://github.com/tybantarnusa/hibi-dl#readme"
+  "homepage": "https://github.com/tybantarnusa/hibi-dl#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.2.0",
+    "@typescript-eslint/parser": "^5.2.0",
+    "eslint": "^8.1.0",
+    "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "arg": "^5.0.1",
+    "axios": "^0.24.0",
+    "esm": "^3.2.25",
+    "inquirer": "^8.2.0"
+  }
 }
