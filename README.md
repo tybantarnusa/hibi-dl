@@ -29,4 +29,4 @@ npm install -g @tybantarnusa/hibi-dl
 Please do any Pull Requests or submit any Issues. I really appreciate it. No instructions, just do what you want to improve.
 
 ## License
-Distributed under the MIT License. See [LICENSE](https://github.com/tybantarnusa/hibi-dl/blob/master/LICENSE) for more information.
+Distributed under the MIT License. See [LICENSE.md](https://github.com/tybantarnusa/hibi-dl/blob/master/LICENSE) for more information.
